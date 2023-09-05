@@ -2,7 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CharacteristicsValue;
+use App\Models\CharKind;
+use App\Models\Goods;
+use App\Models\Price;
+use App\Models\Stock;
+use App\Models\StockBalance;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +19,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Goods::factory()->count(30)->create();
+        CharKind::factory()->count(20)->create();
+        Stock::factory()->count(10)->create();
+        CharacteristicsValue::factory()->count(50)->create();
+        StockBalance::factory()->count(50)->create();
+        Price::factory()->count(30)->create();
     }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Class StockBalance
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property integer $goods_id
  * @property integer $stock_id
  *
- * @property Stock $stock
+ * @property Stock $stocks
  * @property Goods $goods
  */
 class StockBalance extends Model
@@ -28,13 +28,13 @@ class StockBalance extends Model
         'stock_id',
     ];
 
-    public function stock(): HasOne
+    public function goods(): BelongsToMany
     {
-        return $this->hasOne(Stock::class);
+        return $this->belongsToMany(Goods::class);
     }
 
-    public function goods(): HasOne
+    public function stocks(): BelongsToMany
     {
-        return $this->hasOne(Goods::class);
+        return $this->belongsToMany(Stock::class);
     }
 }

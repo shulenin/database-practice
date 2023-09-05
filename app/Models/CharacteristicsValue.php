@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Class CharacteristicsValue
@@ -28,13 +29,13 @@ class CharacteristicsValue extends Model
         'char_kind_id',
     ];
 
-    public function goods(): HasOne
+    public function goods(): BelongsTo
     {
-        return $this->hasOne(Goods::class);
+        return $this->belongsTo(Goods::class);
     }
 
-    public function charKind(): HasOne
+    public function charKind(): BelongsToMany
     {
-        return $this->hasOne(CharKind::class);
+        return $this->belongsToMany(CharKind::class);
     }
 }

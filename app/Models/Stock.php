@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\hasMany;
 
 /**
  * Class Stock
@@ -11,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property integer $id
  * @property string $name
+ *
+ * @property StockBalance $stockBalances
  */
 class Stock extends Model
 {
@@ -19,4 +22,9 @@ class Stock extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function stockBalances(): hasMany
+    {
+        return $this->hasMany(StockBalance::class);
+    }
 }

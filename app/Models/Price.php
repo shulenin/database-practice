@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Price
@@ -25,8 +25,8 @@ class Price extends Model
         'goods_id',
     ];
 
-    public function goods(): HasOne
+    public function goods(): BelongsTo
     {
-        return $this->hasOne(Goods::class);
+        return $this->belongsTo(Goods::class);
     }
 }
